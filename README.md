@@ -1,37 +1,48 @@
-# Introduction
+# tkareine.org
 
-The data of my blog, served from
-[GitHub Pages](http://help.github.com/pages/).
+The data of my blog, served from [GitHub
+Pages](https://pages.github.com/).
 
-Uses [Jekyll](https://github.com/mojombo/jekyll) and
-[Compass](http://compass-style.org/).
+Utilizes [Jekyll](https://jekyllrb.com/) and
+[node-sass](https://github.com/sass/node-sass).
 
-# Usage
+## Usage
 
-Local usage:
+To install dependencies:
 
-    $ gem install bundler
-    $ bundle install
+``` shell
+gem install bundler
+bundle install
+npm install
+```
 
-In a terminal, launch Compass for compiling `*.scss` to `*.css`
-(GitHub does not do this for you):
+To compile and watch Sass sources for changes:
 
-    $ bundle exec rake compass:watch
+``` shell
+bundle exec rake compass:watch
+```
 
-In another terminal, launch Jekyll for compiling and previewing the
-site:
+In another terminal, launch Jekyll to compile, watch site sources for
+changes, and serving the site with http server:
 
-    $ bundle exec rake jekyll
+``` shell
+bundle exec rake jekyll:watch:prod  # or :dev
+```
 
-When you're ready, compile stylesheets without sourcemaps, commit, and
-push the changes to GitHub:
+When you're ready to publish:
 
-    $ bundle exec rake compass:compile
-    $ git commit
-    $ git push origin master
+``` shell
+bundle exec rake deploy
+```
 
-# License
+For other tasks, see:
 
-Copyright &copy; 2010-2013 Tuomas Kareinen. You need my permission to
-reuse content in `_posts` directory. Everything else is released under
-[MIT License](http://www.opensource.org/licenses/MIT).
+``` shell
+bundle exec rake -D
+```
+
+## License
+
+Copyright &copy; 2018 Tuomas Kareinen. You need my permission to reuse
+content in `_posts` directory. Everything else is released under [MIT
+License](https://opensource.org/licenses/MIT).
