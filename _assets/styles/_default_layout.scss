@@ -1,0 +1,75 @@
+@import "_variables.scss";
+
+.default_layout {
+  .articles {
+    margin-bottom: $section-vmargin;
+    line-height: $header-line-height;
+    .posts {
+      font-size: 140%;
+      li {
+        @include clear_float;
+      }
+      li + li {
+        margin-top: $para-vmargin;
+      }
+      @media (max-width: $articles-breakpoint-width - 1) {
+        .title {
+          margin-right: 0.3em;
+        }
+      }
+      @media (min-width: $articles-breakpoint-width) {
+        .title {
+          display: block;
+          float: right;
+          width: 78%;
+        }
+      }
+      .published {
+        font-size: 80%;
+        color: $color-brown;
+        white-space: nowrap;
+        .year {
+          font-size: 80%;
+        }
+        @media (min-width: $articles-breakpoint-width) {
+          & {
+            $date-parts-hmargin: 0.3em;
+            display: block;
+            float: left;
+            margin-top: 0.2em;  // attempt to set to title's baseline
+            width: 22%;
+            .day {
+              display: inline-block;
+              min-width: 1.5em;
+              text-align: right;
+              margin-right: $date-parts-hmargin;
+            }
+            .month {
+              display: inline-block;
+              min-width: 2.1em;
+              margin-right: $date-parts-hmargin;
+            }
+          }
+        }
+      }
+    }
+  }
+  .avatar {
+    border: 2px solid black;
+  }
+  ul.contacts li {
+    list-style: none;
+    position: relative;
+    &:before {
+      content: "\00bb";
+      color: $color-green-dark;
+      position: absolute;
+      left: -$list-item-style-hmargin;
+    }
+  }
+  aside ul li {
+    display: inline-block;
+    margin-right: 1em;
+    font-size: 140%;
+  }
+}

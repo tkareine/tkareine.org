@@ -1,0 +1,9 @@
+<div class="banner">
+  <header>
+    {% if page.url == '/' %}
+    <h1>{{ site.title | xml_escape }}</h1>
+    {% else %}
+    <h1><a href="{{ site.baseurl }}">{{ site.title | xml_escape }}</a></h1>
+    {% endif %}
+  </header>
+</div>

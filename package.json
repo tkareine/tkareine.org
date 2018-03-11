@@ -1,0 +1,11 @@
+{
+  "name": "tkareine.org",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "node-sass": "^4.7.2"
+  },
+  "engines": {
+    "node": ">= 8"
+  }
+}

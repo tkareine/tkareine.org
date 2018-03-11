@@ -1,0 +1,62 @@
+@import "_variables.scss";
+
+.post_layout {
+  header {
+    position: relative;
+    time {
+      color: $color-brown;
+      margin-bottom: $section-vmargin;
+      line-height: $para-line-height;
+      display: block;
+    }
+    @media (min-width: $header-breakpoint-width) {
+      h1 {
+        width: 75%;  // do not overlap date on the right
+      }
+      time {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 0
+      }
+    }
+  }
+  p.update {
+    font-style: italic;
+  }
+  .footnotes {
+    border-top: 1px solid $color-green-dark;
+    margin-top: 2 * $para-vmargin;
+    .footnote {
+      position: relative;
+      margin: $para-vmargin/4 0;
+      padding: $para-vmargin/3 0;
+      a sup {
+        position: absolute;
+        left: -$list-item-style-hmargin;
+        color: $color-blue-light;
+        font-size: 100%;
+        vertical-align: bottom;
+        text-decoration: underline;
+        &:after {
+          content: ".";
+        }
+      }
+      &:target {
+        background-color: lighten($color-green-light, 10%);
+      }
+    }
+  }
+  .comments {
+    margin-top: $section-vmargin;
+    h1 {
+      font-size: 180%;
+    }
+    h2 {
+      font-size: 160%;
+    }
+    h3 {
+      font-size: 140%;
+    }
+  }
+}

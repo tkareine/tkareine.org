@@ -1,0 +1,5 @@
+<header>
+  <h1>{{ page.title | xml_escape }}</h1>
+  <time datetime="{{ page.date | date: '%Y-%m-%d' }}" itemprop="datePublished">{{ page.date | date: '%-d %b %Y' }}</time>
+  <meta itemprop="author" content="{{ site.author | xml_escape }}">
+</header>
