@@ -53,18 +53,18 @@ end
 
 namespace :jekyll do
   desc 'Compile the site (prod env)'
-  task compile: :clean do
+  task :compile do
     sh %{#{JEKYLL_CONFIG.fetch(:bin)} build #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:prod_config)}}
   end
 
   namespace :watch do
     desc 'Compile, watch, and serve the site locally (dev env)'
-    task dev: :clean do
+    task :dev do
       sh DEV_ENV, %{#{JEKYLL_CONFIG.fetch(:bin)} serve --watch #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:dev_config)}}
     end
 
     desc 'Compile, watch, and serve the site locally (prod env)'
-    task prod: :clean do
+    task :prod do
       sh %{#{JEKYLL_CONFIG.fetch(:bin)} serve --watch #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:prod_config)}}
     end
   end
