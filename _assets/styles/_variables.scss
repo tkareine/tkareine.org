@@ -22,7 +22,7 @@ $main-column-min-width: 320px;
 $header-breakpoint-width: 440px;    // pick value between $main-column-{min,max}-width
 $articles-breakpoint-width: 640px;  // pick value between $main-column-{min,max}-width
 
-$section-hmargin: 20px;
+$section-hmargin: 30px;
 $section-vmargin: 30px;
 $section-max-width: $main-column-max-width - 2 * $section-hmargin;
 $section-min-width: $main-column-min-width - 2 * $section-hmargin;
