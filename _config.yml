@@ -2,6 +2,9 @@
 source: .
 destination: _site
 exclude:
+  - GPATH
+  - GRTAGS
+  - GTAGS
   - Gemfile
   - Gemfile.lock
   - README.md
