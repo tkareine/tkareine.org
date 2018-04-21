@@ -3,7 +3,6 @@ layout: post
 title: Readable tests
 date: 2012-05-06 21:20
 published: true
-comments: true
 ---
 
 When I go to explore unfamiliar code, I dig up its tests first. I hope the tests introduce me gently to the purpose of the code, covering the common use cases first, followed by edge conditions and more peculiar cases. I expect tests to reveal me the general behavior and purpose of the code. I don't expect other documentation.[^1]

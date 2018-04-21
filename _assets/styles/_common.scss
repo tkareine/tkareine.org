@@ -157,7 +157,7 @@ figcaption {
   background-color: $color-green-light;
   border-top: 1px solid $color-green-dark;
   display: table;
-  .disclaimer {
+  .legal {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
@@ -169,8 +169,5 @@ figcaption {
   }
   .copyright {
     font-size: 80%;
-  }
-  .privacy_policy {
-    font-size: 70%;
   }
 }

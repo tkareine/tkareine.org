@@ -3,7 +3,6 @@ layout: post
 title: Why JavaScript needs module definitions
 date: 2012-08-11 21:44
 published: true
-comments: true
 ---
 
 Me and my colleague [Eero Anttila](https://twitter.com/eeroan) are working in a project where we are using Eero's [Continuous Calendar plugin for jQuery](https://github.com/reaktor/jquery-continuous-calendar) in the frontend. The plugin utilizes a set of date handling functions for formatting, parsing, and so on. The functions are grouped into objects (`DateTime`, `DateFormat`, `DateRange`, and `Locale`) which are injected into the global window object. A very useful aspect of the functions is that they are immutable. For example, `dateTimeObj.firstDateOfMonth()` returns a new instance of `DateTime`.

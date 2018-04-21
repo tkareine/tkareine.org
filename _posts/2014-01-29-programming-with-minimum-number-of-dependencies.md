@@ -3,7 +3,6 @@ layout: post
 title: Programming with minimum number of dependencies
 date: 2014-01-29T21:40+02
 published: true
-comments: true
 ---
 
 When you're concentrating on the essentials of your current programming task, you'll want to avoid sidetracks as much as possible. Encounter a tricky subtask and you'll start searching the web for a 3rd party code solving it for you. When you're introducing additional dependencies without much further thought, you're not considering their burden on maintenance.

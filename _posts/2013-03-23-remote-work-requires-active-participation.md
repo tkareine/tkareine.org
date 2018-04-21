@@ -3,7 +3,6 @@ layout: post
 title: Remote work calls for active participation
 date: 2013-03-23T00:30+02
 published: true
-comments: true
 ---
 
 Remote work is sometimes a necessity. Be it for your circumstances or for whatever reason, you have weighted with your team that you doing remote work has more benefits than drawbacks. But working alone behind the wire steers you easily to isolation. You concentrate only on your tasks, forgetting what the rest of the team is doing.

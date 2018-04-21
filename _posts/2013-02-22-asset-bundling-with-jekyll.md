@@ -3,7 +3,6 @@ layout: post
 title: Asset bundling with Jekyll
 date: 2013-02-22T03:15+02
 published: true
-comments: true
 ---
 
 How do you ship the stylesheets and JavaScript sources of your [Jekyll](https://jekyllrb.com/)-built site? Shipping them as is, source file for source file, works, but causes the browser to request each of them separately from the backend. You want to consider concatenating all the stylesheet sources specific to your site into one file and then minifying that file. This is called _asset bundling_. And you should apply the same for JavaScript sources, too. This reduces the number of requests the browser does upon initial page load, shortening the time it takes to load the page.

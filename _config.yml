@@ -22,10 +22,6 @@ port: 8080
 
 # Custom
 author: Tuomas Kareinen
-disqus_shortname: tkareine
 feed_subscription: "https://feeds.feedburner.com/tkareine"
 feed_title: "Tuomas Kareinen's blog"
-google_analytics:
-  tracking_id: UA-17308352-1
-  config: "'auto'"
 title: "Tuomas Kareinen's blog"

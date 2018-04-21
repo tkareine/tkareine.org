@@ -1,3 +1,1 @@
-google_analytics:
-  config: "{cookieDomain: 'none'}"
 url: "http://localhost:8080"
