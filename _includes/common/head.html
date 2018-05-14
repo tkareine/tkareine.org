@@ -11,9 +11,9 @@
     <meta name="description" content="{{ description | strip_html | truncatewords: 30, ' &hellip;' }}">
     {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
 
-    <link href="{{ site.url }}{{ page.url }}" rel="canonical">
-    <link href="{{ site.baseurl }}favicon.ico" rel="icon" sizes="16x16 32x32 64x64" type="image/vnd.microsoft.icon">
-    <link href="{{ site.baseurl }}{% ministamp _tmp/site.css assets/site.css %}" rel="stylesheet">
+    <link href="{{ page.url | absolute_url }}" rel="canonical">
+    <link href="{{ "favicon.ico" | relative_url }}" rel="icon" sizes="16x16 32x32 64x64" type="image/vnd.microsoft.icon">
+    <link href="{{ "/" | relative_url }}{% ministamp _tmp/site.css assets/site.css %}" rel="stylesheet">
     <link href="{{ site.feed_subscription }}" rel="alternate" title="{{ site.feed_title | xml_escape }}" type="application/atom+xml">
   </head>
   <body>

@@ -10,7 +10,7 @@ description: The blog of Tuomas Kareinen
     <ul class="posts">
       {% for post in site.posts %}
       <li>
-        <a class="title" href="{{ post.url }}">{{ post.title | xml_escape }}</a>
+        <a class="title" href="{{ post.url | relative_url }}">{{ post.title | xml_escape }}</a>
         <time class="published" datetime="{{ post.date | date: '%Y-%m-%d' }}">
           <span class="day">{{ post.date | date: '%-d' }}</span>
           <span class="month">{{ post.date | date: '%b' }}</span>
@@ -24,7 +24,7 @@ description: The blog of Tuomas Kareinen
 
 <aside>
   <ul>
-    <li><a href="{{ site.baseurl }}about/">About</a></li>
+    <li><a href="{{ "/about/" | relative_url }}">About</a></li>
     <li><a href="{{ site.feed_subscription }}">Feed</a></li>
   </ul>
 </aside>

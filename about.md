@@ -1,7 +1,6 @@
 ---
 layout: default
 title: About
-permalink: /about/
 ---
 
 <img class="inline-right avatar" src="http://www.gravatar.com/avatar/749196d7d478efeb58e982a64520ba94?s=192" alt="LeChuck feeling the voodoo doll effect in his guts in Monkey Island 2 by LucasArts" title="My avatar" width="192" height="192" />

@@ -6,8 +6,7 @@ require 'rubocop/rake_task'
 JEKYLL_CONFIG = {
   bin:         'jekyll',
   common_opts: '--trace',
-  prod_config: '--config _config.yml',
-  dev_config:  '--config _config.yml,_config-dev.yml'
+  config:      '--config _config.yml'
 }.freeze
 
 SASS_CONFIG = {
@@ -21,6 +20,10 @@ SASS_CONFIG = {
 
 DEV_ENV = {
   'JEKYLL_MINIBUNDLE_MODE' => 'development'
+}.freeze
+
+PROD_ENV = {
+  'JEKYLL_ENV' => 'production'
 }.freeze
 
 directory '_tmp'
@@ -54,18 +57,18 @@ end
 namespace :jekyll do
   desc 'Compile the site (prod env)'
   task :compile do
-    sh %{#{JEKYLL_CONFIG.fetch(:bin)} build #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:prod_config)}}
+    sh PROD_ENV, %{#{JEKYLL_CONFIG.fetch(:bin)} build #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:config)}}
   end
 
   namespace :watch do
     desc 'Compile, watch, and serve the site locally (dev env)'
     task :dev do
-      sh DEV_ENV, %{#{JEKYLL_CONFIG.fetch(:bin)} serve --watch #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:dev_config)}}
+      sh DEV_ENV, %{#{JEKYLL_CONFIG.fetch(:bin)} serve --watch #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:config)}}
     end
 
     desc 'Compile, watch, and serve the site locally (prod env)'
     task :prod do
-      sh %{#{JEKYLL_CONFIG.fetch(:bin)} serve --watch #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:prod_config)}}
+      sh PROD_ENV, %{#{JEKYLL_CONFIG.fetch(:bin)} serve --watch #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:config)}}
     end
   end
 
