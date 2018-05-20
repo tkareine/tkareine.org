@@ -26,6 +26,8 @@ PROD_ENV = {
   'JEKYLL_ENV' => 'production'
 }.freeze
 
+AWS_ENV_NAMES = %w{AWS_PROFILE}.freeze
+
 directory '_tmp'
 
 CLOBBER.include '_tmp'
@@ -75,21 +77,29 @@ namespace :jekyll do
   CLEAN.include '_site'
 end
 
+namespace :aws do
+  desc 'Ensure AWS settings are set as environment variables'
+  task :verify do
+    abort 'AWS settings are unset, try `source .env.sh`' if AWS_ENV_NAMES.find do |n|
+      env_var = ENV[n]
+      env_var.nil? || env_var.empty?
+    end
+  end
+
+  desc 'Deploy _site to AWS S3 bucket'
+  task :deploy do
+    sh "aws s3 sync _site/ s3://tkareine.org --delete --exclude 'assets/*.css' --exclude 'assets/*.css' --cache-control 'max-age=0'"
+    sh "aws s3 sync _site/ s3://tkareine.org --include 'assets/*.css' --include 'assets/*.js' --cache-control 'max-age=31536000'"
+    sh 'aws s3 website s3://tkareine.org --index-document index.html --error-document error.html'
+    sh 'aws s3api put-bucket-policy --bucket tkareine.org --policy file://_aws/s3_public_access_policy.json'
+  end
+end
+
 desc 'Compile the site (prod env)'
 task site: %i{clean sass:verify sass:compile jekyll:compile}
 
 desc 'Compile the site and deploy it (prod env)'
-task :deploy do
-  sh %{git checkout master}
-  sh %{git checkout -B tmp-gh-pages}
-  Rake::Task['site'].invoke
-  sh %{git add -f _site}
-  sh %{git commit -m 'Generated site'}
-  sh %{git subtree split --prefix _site -b gh-pages}
-  sh %{git push -f origin gh-pages}
-  sh %{git branch -D gh-pages}
-  sh %{git checkout master}
-end
+task deploy: %i{aws:verify site aws:deploy}
 
 RuboCop::RakeTask.new
 

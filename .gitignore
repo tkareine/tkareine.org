@@ -1,3 +1,4 @@
+.env.sh
 /.bundle/
 /_site/
 /_tmp/

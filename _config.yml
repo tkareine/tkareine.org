@@ -15,7 +15,7 @@ exclude:
 markdown: kramdown
 highlighter: rouge
 lsi: false
-permalink: /blog/:year/:month/:day/:title/
+permalink: /blog/:year/:month/:day/:title.html
 plugins:
   - jekyll/minibundle
 timezone: Europe/Helsinki
