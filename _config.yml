@@ -19,9 +19,9 @@ permalink: /blog/:year/:month/:day/:title/
 plugins:
   - jekyll/minibundle
 timezone: Europe/Helsinki
-baseurl: /tkareine.org
+baseurl: ""
 port: 8080
-url: https://tkareine.github.io
+url: https://tkareine.org
 
 # Custom
 author: Tuomas Kareinen
