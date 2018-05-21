@@ -1,9 +1,6 @@
 # tkareine.org
 
-The data of my blog, served from [GitHub
-Pages](https://pages.github.com/).
-
-Utilizes [Jekyll](https://jekyllrb.com/) and
+The data of my blog. Utilizes [Jekyll](https://jekyllrb.com/) and
 [node-sass](https://github.com/sass/node-sass).
 
 ## Usage
