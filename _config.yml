@@ -18,6 +18,7 @@ lsi: false
 permalink: /articles/:title.html
 plugins:
   - jekyll/minibundle
+  - jekyll-sitemap
 timezone: Europe/Helsinki
 baseurl: ""
 port: 8080
