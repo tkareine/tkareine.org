@@ -11,7 +11,7 @@ popular in scripting use, I keep using it. This leaves me to optimize my
 `~/.bashrc`.
 
 I program with Node.js frequently, so a Node.js version manager is an
-essential tool. Upon investigating the execution time of `.bashrc`, I
+essential tool. Upon investigating the execution time of my `.bashrc`, I
 found that loading [nvm] takes a lot of time:
 
 <figure>
@@ -34,8 +34,9 @@ $ nvm --version
 {% endhighlight %}
 </figure>
 
-400 ms for sourcing `nvm.sh` is too much for me, even though `nvm` is a
-quite nice tool.
+400 ms for sourcing `nvm.sh` is a way too big share of the time budget
+I'd like to allocate for starting Bash in interactive mode. It's a pity,
+because `nvm` is a quite nice tool.
 
 An alternative for `nvm` is [nodenv]:
 
@@ -60,12 +61,12 @@ nodenv 1.1.2
 I can manage with 70 ms. This is the tool I chose to use as my Node.js
 version manager for a while. But because `nodenv` utilizes shims to wrap
 the executables of the selected Node.js version, a couple of problems
-arise. The first is that after installing new executable from global npm
-package, you must remember to run `nodenv rehash` to rebuild the
+arise. The first is that after installing a new executable from global
+npm package, you must remember to run `nodenv rehash` to rebuild the
 shims. Otherwise you can't run the executable. The second is that you
 lose access to the manual pages of the wrapped executables: a shim is an
-indirection to the actual executable, causing `man`'s manual page search
-to miss the page. A demonstration of the problems:
+indirection for the actual executable, causing `man`'s manual page
+search to miss the page. A demonstration of the problems:
 
 <figure>
 {% highlight bash %}
@@ -101,26 +102,27 @@ the manual pages of the executables of the selected Node.js version.
 `nvm` and `nodenv` have a lot of features. While they are useful in some
 scenarios, such as continuous integration setups, I'd be satisfied with
 less in my development environment. The ability to install specific
-Node.js versions and to easily switch between them, independently per
+Node.js versions and to switch between them easily, independently per
 shell session, would be enough.
 
 In the Ruby community, [ruby-install] and [chruby] tools provide just
 these features, and nothing more. The former is for installing Rubies
-and the latter is for switching between them. What's great about this
+and the latter for switching between them. What's great about this
 arrangement of separate tools is that the switcher, `chruby`, is very
 lightweight.
 
 [node-build], part of `nodenv` project, is a dedicated Node.js
 installer. It checks the digest of the downloaded Node.js package and
-allows you to unpack it to any directory. I'll keep using it.
+allows you to unpack it to any directory. This is good and I'll keep
+using it.
 
 For the version switcher, I didn't find anything I liked. [sh-chnode] is
 written in the same spirit as `chruby`, but includes some design
-decisions I didn't like personnally.
+decisions I didn't like personally.
 
-I decided to write my own version switcher, even though there's already
-so many. But this one is fast to load, does one thing well, and is
-suitable for me. :) Naming is hard, so I just call it `chnode`. Let's
+I ended up writing my own version switcher, even though there's already
+so many of them. But this one is fast to load, does one thing well, and
+is suitable for me. :) Naming is hard, so I just call it `chnode`. Let's
 see it in action:
 
 <figure>
@@ -175,14 +177,31 @@ might put such a file at a project's root directory. `chruby` has the
 feature, but because I don't use it, I dropped it.
 
 `chnode` supports [GNU Bash] and [Zsh], has good test coverage, and
-allows you to display the selected Node.js version in shell's prompt
+allows you to display the selected Node.js version in the shell prompt
 with ease. It's MIT licensed. See the [README][chnode-README] for more.
+
+Finally, the total execution time of initializing my [Bash
+setup][my-bashrc] in interactive mode, including selecting a Node.js
+version with `chnode`:
+
+<figure>
+{% highlight bash %}
+{% raw %}
+$ time bash -i -c true
+
+real	0m0.375s
+user	0m0.228s
+sys	0m0.075s
+{% endraw %}
+{% endhighlight %}
+</figure>
 
 [GNU Bash]: https://www.gnu.org/software/bash/
 [Zsh]: https://www.zsh.org/
 [chnode-README]: https://github.com/tkareine/chnode#readme
 [chnode]: https://github.com/tkareine/chnode
 [chruby]: https://github.com/postmodern/chruby
+[my-bashrc]: https://github.com/tkareine/dotfiles/blob/master/.bashrc
 [node-build]: https://github.com/nodenv/node-build
 [nodenv]: https://github.com/nodenv/nodenv
 [nvm]: https://github.com/creationix/nvm
