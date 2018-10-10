@@ -36,7 +36,7 @@ namespace :sass do
   desc 'Ensure node-sass is installed'
   task :verify do
     unless File.executable?(SASS_CONFIG.fetch(:bin))
-      raise "node-sass executable not found: #{SASS_CONFIG.fetch(:bin)}\nTry `npm install`."
+      raise "node-sass executable not found: #{SASS_CONFIG.fetch(:bin)}\nTry `npm ci`."
     end
   end
 

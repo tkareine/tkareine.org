@@ -10,7 +10,7 @@ To install dependencies:
 ``` shell
 gem install bundler
 bundle install
-npm install
+npm ci
 ```
 
 To compile and watch Sass sources for changes:
