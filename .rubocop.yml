@@ -1,9 +1,12 @@
-# Default config: https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+# Default config:  https://github.com/bbatsov/rubocop/blob/master/config/default.yml
 
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
   TargetRubyVersion: 2.5
+Layout/AlignHash:
+  EnforcedColonStyle: table
+  EnforcedHashRocketStyle: table
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 Metrics/LineLength:
