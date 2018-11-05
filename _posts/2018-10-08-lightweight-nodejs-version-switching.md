@@ -189,9 +189,9 @@ version with `chnode`:
 {% raw %}
 $ time bash -i -c true
 
-real	0m0.375s
-user	0m0.228s
-sys	0m0.075s
+real	0m0.337s
+user	0m0.240s
+sys	0m0.083s
 {% endraw %}
 {% endhighlight %}
 </figure>
