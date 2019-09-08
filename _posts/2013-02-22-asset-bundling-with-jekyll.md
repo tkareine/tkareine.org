@@ -13,11 +13,11 @@ It is up to you to solve both asset bundling and cache busting with Jekyll. Out 
 
 ## Jekyll with GitHub pages
 
-With [GitHub pages](http://pages.github.com/), you let the service generate the site from your sources. The tradeoff is that GitHub runs Jekyll with `--safe` switch, disabling plugins. This means you have to do with what Jekyll has by default.[^2]
+With [GitHub pages](https://pages.github.com/), you let the service generate the site from your sources. The tradeoff is that GitHub runs Jekyll with `--safe` switch, disabling plugins. This means you have to do with what Jekyll has by default.[^2]
 
-For bundling assets, there are two options. Either combine the assets manually, or use an external tool for it. I just put all JavaScript codes in a single file when there's not too much of it. The latter option is the one I prefer for stylesheets, because I don't want to write CSS by hand, anyway. I use [Compass](http://compass-style.org/) to author stylesheets with [Sass](http://sass-lang.com/) markup and direct Compass to compile the resulting CSS into a single compact file. The bad thing is that I have to add the compiled CSS files to git.
+For bundling assets, there are two options. Either combine the assets manually, or use an external tool for it. I just put all JavaScript codes in a single file when there's not too much of it. The latter option is the one I prefer for stylesheets, because I don't want to write CSS by hand, anyway. I use [Compass](http://compass-style.org/) to author stylesheets with [Sass](https://sass-lang.com/) markup and direct Compass to compile the resulting CSS into a single compact file. The bad thing is that I have to add the compiled CSS files to git.
 
-Update (9 March 2013): Another alternative is to concatenate assets with `include` tags, as shown [here](http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/).
+Update (9 March 2013): Another alternative is to concatenate assets with `include` tags, as shown [here](https://developmentseed.org/blog/2011/09/09/jekyll-github-pages/).
 {: .update}
 
 Then you have to solve cache busting. Here's one way to do it. In your content file, add a query parameter to the URL of the asset:
@@ -106,7 +106,7 @@ The resulting filename fill have the MD5 digest of the file as the fingerprint:
 <link href="assets/screen-2ef6d65c7f031e021a59eb5c1916f2f2.css" rel="stylesheet" media="screen, projection">
 {% endhighlight %}
 
-This approach works with [RequireJS optimizer](http://requirejs.org/docs/optimization.html), too!
+This approach works with [RequireJS optimizer](https://requirejs.org/docs/optimization.html), too!
 
 Both the fingerprinting and asset bundling mechanisms work in Jekyll's auto regeneration mode.
 

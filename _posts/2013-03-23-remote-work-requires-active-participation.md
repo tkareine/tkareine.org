@@ -13,13 +13,13 @@ Being a remote team member calls for active participation. Listen to the others,
 
 Team practices gain another level of importance for remote work. I can't imagine a team functioning without daily meetings. Or deciding what are the next most important tasks to do without story planning, or improving as a team without retrospectives. Having such practices on a regular basis ensures at least a minimum level of communication between team members.[^1]
 
-As Inayali de Leon writes in [Becoming better communicators](http://alistapart.com/article/becoming-better-communicators), we are emotional creatures, and digital communication removes the emotional cues that mitigate worry. We have to be aware of this. The better you know your team member, the better chance you have interpreting her feelings correctly.
+As Inayali de Leon writes in [Becoming better communicators](https://alistapart.com/article/becoming-better-communicators), we are emotional creatures, and digital communication removes the emotional cues that mitigate worry. We have to be aware of this. The better you know your team member, the better chance you have interpreting her feelings correctly.
 
-Because we tend to misunderstand messages, you should use a communication medium that reduces emotional cues the least. Prefer video over voice, and voice over text. Use at least voice communications for daily meetings. I have found out that dedicating a laptop for constant video connection to the rest of the team with [Google Hangout](http://www.google.com/+/learnmore/hangouts/) is very beneficial.
+Because we tend to misunderstand messages, you should use a communication medium that reduces emotional cues the least. Prefer video over voice, and voice over text. Use at least voice communications for daily meetings. I have found out that dedicating a laptop for constant video connection to the rest of the team with [Google Hangout](https://hangouts.google.com/) is very beneficial.
 
 But even video communications is not a replacement for meeting people in person. You gain tremendously more understanding by taking part in story plannings and retrospectives in person. Meet the team regularly and make it a habit. The team evolves their own vocabulary and fellowship, and you must share it in order to be part of the team.
 
 Be active.
 
-[^1]: Pair programming is great for sharing techniques and practices, and solving problems together. It is possible to do that remotely with screen sharing tools like [TeamViewer](http://www.teamviewer.com/).
+[^1]: Pair programming is great for sharing techniques and practices, and solving problems together. It is possible to do that remotely with screen sharing tools like [TeamViewer](https://www.teamviewer.com/).
 {: .footnotes}

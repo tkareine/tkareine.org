@@ -9,7 +9,7 @@ Me and my colleague [Eero Anttila](https://twitter.com/eeroan) are working in a 
 
 We found out that we could benefit from these functions in the application generally, needing date handling also elsewhere than in the calendar component.
 
-Our frontend loads with [RequireJS](http://requirejs.org/), and we've been happy composing our application from small modules. Now, in order to get access to the date handling functions in our modules, we need either to ensure that Continuous Calendar gets loaded before our application's modules, or we need to introduce optional AMD support for the date functions. Because it doesn't make sense to load the whole Continuous Calendar just to get access to the functions, we decided add AMD support to them.
+Our frontend loads with [RequireJS](https://requirejs.org/), and we've been happy composing our application from small modules. Now, in order to get access to the date handling functions in our modules, we need either to ensure that Continuous Calendar gets loaded before our application's modules, or we need to introduce optional AMD support for the date functions. Because it doesn't make sense to load the whole Continuous Calendar just to get access to the functions, we decided add AMD support to them.
 
 The AMD community has devised common patterns for making a JavaScript module[^1] to work simultaneously with AMD loaders, CommonJS, and traditional browser script loading. They are called as [Universal Module Definition](https://github.com/umdjs/umd) (UMD) patterns. Essentially, we are talking about inserting bootstrap code in the beginning of a module's source file.
 
@@ -72,5 +72,5 @@ The UMD pattern drives the module author to make at most one addition to the glo
 Of course, it is up to the module author to play by these rules. There's nothing preventing the factory function from referring to the window object for other dependencies or polluting the global window object. But why would the author want to surprise the users of the module?
 
 [^1]: _Module_ meaning a JavaScript source file defining functionality that can be used elsewhere.
-[^2]: The factory function is an application of [Module Pattern with import mixins](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
+[^2]: The factory function is an application of [Module Pattern with import mixins](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
 {: .footnotes}

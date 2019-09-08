@@ -21,7 +21,7 @@ The actual tests are just claims about the state of system-under-test. They caus
 
 Together, a system-under-test and its test claims form a _"test context"_.
 
-An example of such a test, written in JavaScript and using [Mocha](http://visionmedia.github.com/mocha/) test framework:
+An example of such a test, written in JavaScript and using [Mocha](https://mochajs.org/) test framework:
 
 <figure>
 <figcaption>cart_page_spec.js</figcaption>
@@ -186,7 +186,7 @@ When you adhere to writing a test claim for each test case, it becomes easy to s
 
 If your test framework of choice has expression syntax for test claim definition, you can avoid repeating the boilerplate code for each test claim. First, think a group of test cases and see what is common to them. Then, put the varying parts of the cases to a collection. Lastly, iterate the collection so that the body of the iteration becomes the test claim definition. This is what I did in the examples above.
 
-I think this improves readability a lot, because now I can put each test case to its own line, without the boilerplate code between them. This is a manifestation of [Don't Repeat Yourself](http://en.wikipedia.org/wiki/Don't_repeat_yourself) (DRY) principle.
+I think this improves readability a lot, because now I can put each test case to its own line, without the boilerplate code between them. This is a manifestation of [Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don't_repeat_yourself) (DRY) principle.
 
 But don't take DRY to the extreme. You should aim for making tests readable, not as short as possible. This is why I separated the group of happy path tests from the group of argument validation tests.
 
