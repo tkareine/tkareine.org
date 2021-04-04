@@ -1,17 +1,19 @@
-# Default config:  https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+# Cops docs: https://docs.rubocop.org/rubocop/cops.html
+# Default config: https://github.com/rubocop/rubocop/blob/master/config/default.yml
 
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
   NewCops: enable
+  SuggestExtensions: false
   TargetRubyVersion: 3.0
 Layout/HashAlignment:
   EnforcedColonStyle: table
   EnforcedHashRocketStyle: table
+Layout/LineLength:
+  Max: 200
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
-Metrics/LineLength:
-  Max: 200
 Style/CollectionMethods:
   Enabled: true
 Style/Copyright:
