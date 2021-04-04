@@ -1,5 +1,6 @@
 .env.sh
 /.bundle/
+/.jekyll-cache/
 /_site/
 /_tmp/
 /node_modules/
