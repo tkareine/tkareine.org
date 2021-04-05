@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rake/clean'
+require 'shellwords'
 require 'rubocop/rake_task'
 
 JEKYLL_CONFIG = {
@@ -88,8 +89,15 @@ namespace :aws do
 
   desc 'Deploy _site to AWS S3 bucket'
   task :deploy do
-    sh "aws s3 sync _site/ s3://tkareine.org --delete --exclude 'assets/*.css' --exclude 'assets/*.js' --cache-control 'no-cache'"
-    sh "aws s3 sync _site/ s3://tkareine.org --include 'assets/*.css' --include 'assets/*.js' --cache-control 'max-age=31536000'"
+    site_dir = Pathname.new('_site')
+    stamped_assets =
+      Dir['_site/assets/**/*.*']
+      .grep(/-[a-z0-9]{32}\./)
+      .map { |f| Pathname.new(f).relative_path_from(site_dir).to_s.shellescape }
+    excludes = stamped_assets.map { |f| "--exclude #{f}" }.join(' ')
+    includes = stamped_assets.map { |f| "--include #{f}" }.join(' ')
+    sh "aws s3 sync _site/ s3://tkareine.org --delete #{excludes} --cache-control no-cache"
+    sh "aws s3 sync _site/ s3://tkareine.org #{includes} --cache-control max-age=31536000"
   end
 end
 
