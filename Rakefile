@@ -88,9 +88,8 @@ namespace :aws do
 
   desc 'Deploy _site to AWS S3 bucket'
   task :deploy do
-    sh "aws s3 sync _site/ s3://tkareine.org --delete --exclude 'assets/*.css' --exclude 'assets/*.css' --cache-control 'max-age=0'"
+    sh "aws s3 sync _site/ s3://tkareine.org --delete --exclude 'assets/*.css' --exclude 'assets/*.js' --cache-control 'no-cache'"
     sh "aws s3 sync _site/ s3://tkareine.org --include 'assets/*.css' --include 'assets/*.js' --cache-control 'max-age=31536000'"
-    sh 'aws s3 website s3://tkareine.org --index-document index.html --error-document 404.html'
   end
 end
 
