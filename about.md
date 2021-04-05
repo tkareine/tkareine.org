@@ -6,9 +6,12 @@ permalink: /about.html
 
 <img class="inline-right avatar" src="https://www.gravatar.com/avatar/749196d7d478efeb58e982a64520ba94?s=192" alt="LeChuck feeling the voodoo doll effect in his guts in Monkey Island 2 by LucasArts" title="My avatar" width="192" height="192" />
 
-I'm a programmer interested especially in web technologies, working with both frontend and backend stuff. I advocate readable and maintainable code. I live in [Jyväskylä, Finland][hometown].
+I'm a software engineer interested especially in web technologies,
+working with both frontend and backend stuff. I live in [Jyväskylä,
+Finland][hometown].
 
-This is my personal blog (and it represents solely my opinions). I write about IT industry related things that feel important to me.
+This is my personal blog (and it represents solely my opinions). I write
+about IT industry related things that feel important to me.
 
 ## Contacting
 
