@@ -52,7 +52,7 @@ em {
 
 li {
   margin: 0.5em 0;
-  list-style-position: outside;
+  list-style-position: inside;
 }
 
 p {
@@ -80,7 +80,7 @@ a {
 }
 
 figure {
-  margin: 2 * $para-vmargin 0;
+  margin: $para-vmargin 0;
 
   & > & {
     margin: 0;

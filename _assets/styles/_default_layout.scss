@@ -29,9 +29,6 @@
         font-size: 80%;
         color: $color-brown;
         white-space: nowrap;
-        .year {
-          font-size: 80%;
-        }
         @media (min-width: $articles-breakpoint-width) {
           & {
             $date-parts-hmargin: 0.3em;
