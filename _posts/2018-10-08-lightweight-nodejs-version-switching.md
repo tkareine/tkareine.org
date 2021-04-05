@@ -14,7 +14,6 @@ I program with Node.js frequently, so a Node.js version manager is an
 essential tool. Upon investigating the execution time of my `.bashrc`, I
 found that loading [nvm] takes a lot of time:
 
-<figure>
 {% highlight bash %}
 {% raw %}
 $ ls ~/.nvm/versions/node
@@ -32,7 +31,6 @@ $ nvm --version
 0.33.11
 {% endraw %}
 {% endhighlight %}
-</figure>
 
 400 ms for sourcing `nvm.sh` is a way too big share of the time budget
 I'd like to allocate for starting Bash in interactive mode. It's a pity,
@@ -40,7 +38,6 @@ because `nvm` is a quite nice tool.
 
 An alternative for `nvm` is [nodenv]:
 
-<figure>
 {% highlight bash %}
 {% raw %}
 $ ls ~/.nodenv/versions
@@ -56,7 +53,6 @@ $ nodenv --version
 nodenv 1.1.2
 {% endraw %}
 {% endhighlight %}
-</figure>
 
 I can manage with 70 ms. This is the tool I chose to use as my Node.js
 version manager for a while. But because `nodenv` utilizes shims to wrap
@@ -68,7 +64,6 @@ lose access to the manual pages of the wrapped executables: a shim is an
 indirection for the actual executable, causing `man`'s manual page
 search to miss the page. A demonstration of the problems:
 
-<figure>
 {% highlight bash %}
 {% raw %}
 $ npm ls -g --depth=0
@@ -94,7 +89,6 @@ $ man -w marked
 No manual entry for marked
 {% endraw %}
 {% endhighlight %}
-</figure>
 
 I keep forgetting to run `nodenv rehash` and I do would like to access
 the manual pages of the executables of the selected Node.js version.
@@ -125,7 +119,6 @@ so many of them. But this one is fast to load, does one thing well, and
 is suitable for me. :) Naming is hard, so I just call it `chnode`. Let's
 see it in action:
 
-<figure>
 {% highlight bash %}
 {% raw %}
 $ ls ~/.nodes
@@ -161,7 +154,6 @@ $ chnode --version
 chnode: 0.2.0
 {% endraw %}
 {% endhighlight %}
-</figure>
 
 For me, [chnode] is the tool comparable to `chruby` for Node.js
 versions. Like `chruby`, the primary mechanism of `chnode` is to modify
@@ -184,7 +176,6 @@ Finally, the total execution time of initializing my [Bash
 setup][my-bashrc] in interactive mode, including selecting a Node.js
 version with `chnode`:
 
-<figure>
 {% highlight bash %}
 {% raw %}
 $ time bash -i -c true
@@ -194,7 +185,6 @@ user	0m0.240s
 sys	0m0.083s
 {% endraw %}
 {% endhighlight %}
-</figure>
 
 [GNU Bash]: https://www.gnu.org/software/bash/
 [Zsh]: https://www.zsh.org/
