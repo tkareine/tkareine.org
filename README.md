@@ -1,7 +1,7 @@
 # tkareine.org
 
-The data of my blog. Utilizes [Jekyll](https://jekyllrb.com/) and
-[node-sass](https://github.com/sass/node-sass).
+The data of my blog. Utilizes [Jekyll] and [node-sass]. Deployed to an
+S3 bucket at AWS.
 
 ## Usage
 
@@ -13,14 +13,14 @@ bundle install
 npm ci
 ```
 
-To compile and watch Sass sources for changes:
+To compile and watch Sass sources for changes with [node-sass]:
 
 ``` shell
-bundle exec rake compass:watch
+bundle exec rake sass:watch
 ```
 
-In another terminal, launch Jekyll to compile, watch site sources for
-changes, and serving the site with http server:
+In another terminal, launch [Jekyll] to compile, watch site sources for
+changes, and serve the site with the [Webrick] http server:
 
 ``` shell
 bundle exec rake jekyll:watch:prod  # or :dev
@@ -41,5 +41,9 @@ bundle exec rake -D
 ## License
 
 Copyright &copy; 2018 Tuomas Kareinen. You need my permission to reuse
-content in `_posts` directory. Everything else is released under [MIT
-License](https://opensource.org/licenses/MIT).
+the content in the `_posts` directory. Everything else is released under
+the [MIT License](https://opensource.org/licenses/MIT).
+
+[Jekyll]: https://jekyllrb.com/
+[Webrick]: https://github.com/ruby/webrick
+[node-sass]: https://github.com/sass/node-sass
