@@ -40,9 +40,10 @@ bundle exec rake -D
 
 ## License
 
-Copyright &copy; 2018 Tuomas Kareinen. You need my permission to reuse
-the content in the `_posts` directory. Everything else is released under
-the [MIT License](https://opensource.org/licenses/MIT).
+Copyright &copy; 2018 Tuomas Kareinen. I hope you'd ask my permission to
+reuse the content in the `_posts` and `_sources` directories. Everything
+else is released under the [MIT
+License](https://opensource.org/licenses/MIT).
 
 [Jekyll]: https://jekyllrb.com/
 [Webrick]: https://github.com/ruby/webrick
