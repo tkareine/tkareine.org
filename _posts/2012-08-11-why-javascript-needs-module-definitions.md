@@ -21,13 +21,18 @@ Here's an example how `DateTime` global object supports AMD loaders and traditio
 {% raw %}
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD loading: define module named "DateTime" with no dependencies and build it
+    // AMD loading: define module named "DateTime" with no dependencies
+    // and build it
     define('DateTime', [], factory)
   } else {
-    // traditional browser loading: build DateTime object without dependencies and inject it into window object
+    // traditional browser loading: build DateTime object without
+    // dependencies and inject it into window object
     root.DateTime = factory()
   }
-}(this, function() {  // `this` refers to window, the second argument is the factory function.
+}(this, function() {
+  // above, `this` refers to window, the second argument is the factory
+  // function
+
   // build DateTime and return it
   var DateTime = {}
   return DateTime
@@ -46,14 +51,20 @@ However, for building `DateRange`, we need jQuery, `DateFormat`, and `DateTime`:
 {% raw %}
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    // AMD loading: define module named "DateRange" with dependencies and build it
+    // AMD loading: define module named "DateRange" with dependencies
+    // and build it
     define('DateRange', ['jquery', 'DateFormat', 'DateTime'], factory)
   } else {
-    // traditional browser loading: build DateRange object with dependencies and inject it into window object
+    // traditional browser loading: build DateRange object with
+    // dependencies and inject it into window object
     root.DateTime = factory(root.jQuery, root.DateFormat, root.DateTime)
   }
-}(this, function($, DateFormat, DateTime) {  // `this` refers to window, the second argument is the factory function with dependencies
-  // build DateFormat with the help of $, DateFormat, and DateTime, and return it
+}(this, function($, DateFormat, DateTime) {
+  // above, `this` refers to window, the second argument is the factory
+  // function with dependencies
+
+  // build DateFormat with the help of $, DateFormat, and DateTime, and
+  // return it
   var DateRange = {}
   return DateRange
 })
@@ -72,5 +83,5 @@ The UMD pattern drives the module author to make at most one addition to the glo
 Of course, it is up to the module author to play by these rules. There's nothing preventing the factory function from referring to the window object for other dependencies or polluting the global window object. But why would the author want to surprise the users of the module?
 
 [^1]: _Module_ meaning a JavaScript source file defining functionality that can be used elsewhere.
+
 [^2]: The factory function is an application of [Module Pattern with import mixins](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript).
-{: .footnotes}

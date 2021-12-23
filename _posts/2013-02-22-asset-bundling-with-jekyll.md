@@ -117,7 +117,7 @@ I have shown how to automate asset bundling and fingerprinting for cache busting
 You can read more about the plugin at its [project page in GitHub][minibundle]. Also, you might be interested in a [site](http://agilejkl.com/) that uses the plugin just like described above.
 
 [^1]: [Google recommends](https://developers.google.com/speed/docs/best-practices/caching#LeverageProxyCaching) cache busting with fingerprinting over using a query parameter. Some old proxy caches do not cache static files at all if the URL contains query parameters.
+
 [^2]: However, you can work around this by generating your site locally and then pushing the generated files to GitHub. Then you're not locked to Jekyll's safe mode.
-{: .footnotes}
 
 [minibundle]: https://github.com/tkareine/jekyll-minibundle

@@ -26,5 +26,5 @@ To demonstrate the implementation, I wrote a similar [toy program](https://gist.
 Healthy dependency management balances the risks and benefits. This article is not about doing it all by yourself, avoiding dependencies for the sake of it. Instead, you should consider each dependency, think what you benefit from it, and how it fits to the whole project.
 
 [^1]: [jekyll-minibundle](https://github.com/tkareine/jekyll-minibundle) is an example of this.
+
 [^2]: Ruby belongs to the customer's development environment already, so it's not a new dependency by itself.
-{: .footnotes}

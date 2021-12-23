@@ -22,4 +22,3 @@ But even video communications is not a replacement for meeting people in person.
 Be active.
 
 [^1]: Pair programming is great for sharing techniques and practices, and solving problems together. It is possible to do that remotely with screen sharing tools like [TeamViewer](https://www.teamviewer.com/).
-{: .footnotes}

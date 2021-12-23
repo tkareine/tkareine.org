@@ -215,13 +215,17 @@ define(['environment'], function(environment) {
 
   function createProductionAPI() {
     return {
-      postCheckout: function(callback) { $.ajax(/*...*/).success(callback) }
+      postCheckout: function(callback) {
+        $.ajax(/*...*/).success(callback)
+      }
     }
   }
 
   function createTestAPI() {
     return {
-      postCheckout: function(callback) { callback(stubs.postCheckoutResponse) }
+      postCheckout: function(callback) {
+        callback(stubs.postCheckoutResponse)
+      }
     }
   }
 })
@@ -238,4 +242,3 @@ I dislike using mocks in tests and guiding code design. They end up being a main
 Like good code, writing good tests is hard and takes many iterations. I use these guidelines to steer me when I write tests, but I wouldn't hesitate to drop following a particular guideline if it makes the end result more readable.
 
 [^1]: The emphasis is on _expectation_. For example, a hack in the middle of self-documenting code is unexpected. Thus, you should document any unexpected code. You can even isolate the hack to its own function with a descriptive name.
-{: .footnotes}
