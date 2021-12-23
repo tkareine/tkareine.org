@@ -5,6 +5,7 @@ $font-code: "Roboto Mono", monospace;
 $header-line-height: 1.2;
 $code-line-height: 1.2;
 $para-line-height: 1.6;
+$inline-hl-padding: 0 2px;
 
 $list-item-style-hmargin: 1.0rem;
 
@@ -12,10 +13,11 @@ $color-black: #000;
 $color-white: #fff;
 $color-green-light: #edf8b8;
 $color-green-dark: #9dd49f;
-$color-blue-light: #277772;
-$color-blue-dark: #4a646b;
+$color-teal-light: #19625e;
 $color-brown: #5f5555;
-$color-gray: lighten(black, 20%);
+$color-gray-dark: lighten($color-black, 20%);
+$color-gray-light2: darken($color-white, 20%);
+$color-gray-light1: darken($color-white, 5%);
 
 $main-column-max-width: 720px;
 $main-column-min-width: 320px;

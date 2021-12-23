@@ -11,7 +11,7 @@ body {
   width: 100%;
   font-family: $font-body;
   background-color: $color-green-light;
-  color: $color-gray;
+  color: $color-gray-dark;
 }
 
 .page {
@@ -50,20 +50,41 @@ em {
   font-style: italic;
 }
 
+ol, ul {
+  padding-left: 1em;
+}
+
 li {
-  margin: 0.5em 0;
-  list-style-position: inside;
+  margin: $para-vmargin 0;
+  line-height: $para-line-height;
+  list-style-position: outside;
 }
 
 p {
   line-height: $para-line-height;
   margin: $para-vmargin 0;
+
+  a {
+    padding: $inline-hl-padding;
+
+    &:hover, &:hover code, &:active, &:active code {
+      background-color: $color-green-light;
+    }
+  }
+
+  code {
+    background-color: $color-gray-light1;
+    padding: $inline-hl-padding;
+  }
+}
+
+pre {
+  line-height: $code-line-height;
 }
 
 code {
   font-family: $font-code;
   font-size: 90%;
-  line-height: $code-line-height;
 }
 
 sup {
@@ -72,11 +93,18 @@ sup {
 }
 
 a {
-  color: $color-blue-light;
+  color: $color-teal-light;
   text-decoration: underline;
-  &:visited, &:hover, &:active {
-    color: $color-blue-dark;
+
+  &:visited {
+    color: $color-gray-dark;
   }
+}
+
+blockquote {
+  border-left: 2px solid $color-gray-light2;
+  padding-left: 1em;
+  font-style: italic;
 }
 
 figure {
@@ -98,6 +126,33 @@ figcaption {
   padding: 0.5em 0;
   border-top: 1px solid $color-green-dark;
   border-bottom: 1px solid $color-green-dark;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+th {
+  font-weight: 700;
+  border-bottom: 1px solid $color-green-dark;
+}
+
+th, td {
+  padding: 0.5em;
+}
+
+tbody tr:nth-child(even) {
+  background-color: $color-gray-light1;
+}
+
+.wide-table {
+  overflow-x: auto;
+}
+
+.code-table td {
+  font-family: $font-code;
+  font-size: 90%;
 }
 
 @media (min-width: $section-max-width - 2 * $section-hmargin) {

@@ -53,11 +53,12 @@
     }
   }
   .avatar {
-    border: 2px solid black;
+    border: 2px solid $color-black;
   }
   ul.contacts li {
     list-style: none;
     position: relative;
+    margin: 0.5rem 0;
     &:before {
       content: "\00bb";
       color: $color-green-dark;
