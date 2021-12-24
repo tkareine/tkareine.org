@@ -25,12 +25,12 @@ The imaginary web service manages education related entities: students,
 employees, facilities, and so on.[^2] Typical management operations are
 creating, reading, updating, and deleting entities. Here, we focus on
 employees, their employment contracts, and related information.
-Collectively, we'll call those as "staff" entities and dedicate a
-microservice named "Staff service" for processing them. There's also an
+Collectively, we'll call those as "staff" entities and dedicate an
+application named "Staff service" for processing them. There's also an
 identity provider (IdP) service that is used to authenticate both
 students and employees. Because the IdP is provided as an external
-service, we have another microservice, called "Users service", that
-maps our user identifiers to the IdP's user identifiers. Finally, an API
+service, we have another application, called "Users service", that maps
+our user identifiers to the IdP's user identifiers. Finally, an API
 gateway node serves as the reverse HTTP proxy for all inbound traffic to
 APIs.
 
@@ -38,9 +38,9 @@ Here's a diagram of the web service from the viewpoint of the Staff API:
 
 <img src="{{ "/" | relative_url }}{% ministamp _assets/images/imaginary-web-service-components.svg assets/images/imaginary-web-service-components.svg %}" alt="An imaginary web service comprising of the client, three internal services, and one external service" title="An imaginary web service" width="100%" style="max-width: 500px;" />
 
-Because we need to allow employees to login to the service, Staff
+Because we need to allow employees to login to the service, the Staff
 service needs to associate a user entity for an employee. This happens
-by calling the Users API of Users service, which hides the complexity of
+by calling the API of the Users service, which hides the complexity of
 the IdP's User management API.
 
 Looking at the diagram, we can identify the following components and
@@ -84,21 +84,21 @@ diagram):
 1. Between the browser and the API gateway: call the public Staff API to
    create an employee
 
-2. Between the API gateway and Staff service: forward the call to the
-   microservice
+2. Between the API gateway and the Staff service: forward the call to
+   the microservice
 
-3. Between Staff service and Users service: call the Users API to create
-   a new user entity to associate with the employee
+3. Between the Staff service and the Users service: call the Users API
+   to create a new user entity to associate with the employee
 
-4. Between Users service and the IdP service: call the User management
-   API to create the user entity to the IdP in order to allow the
-   employee to login, and provide user identifier mapping between
+4. Between the Users service and the IdP service: call the User
+   management API to create the user entity to the IdP in order to allow
+   the employee to login, and provide user identifier mapping between
    systems
 
 Another technology in general use is database transactions, especially
 for SQL databases which usually come with the [ACID][acid] properties. A
-connection from the app server to the database sits on top of TCP
-usually, and the database server guarantees that if the transaction
+connection from the application server to the database sits on top of
+TCP usually, and the database server guarantees that if the transaction
 commits successfully, the app's modifications to the data leave the
 database in a consistent state. It's another safeguard against data
 corruption, but again between two components only. The creation of a new
@@ -117,17 +117,17 @@ path. Let's look at some possible problems.
 
 *Broken data integrity*: Even though a TCP session uses checksums to
 ensure two hosts transfer data unchanged over the communications
-channel, it does not prevent the app server reading data received or
-writing data to be sent via malfunctioning hardware memory. Data
-corruption can occur.
+channel, it does not guard the application server from reading data
+received or writing data to be sent via malfunctioning hardware
+memory. Data corruption can occur.
 
 *Broken data confidentiality*: A client that serves to integrate an
 external and our imaginary web service sends the login password of the
 employee along with the data in the request to create the employee to
 the Staff API. TLS does protect the communication channel between any
-two hosts with encryption, but it does not prevent the app server from
-reading the password in clear text. Any process in the app server can
-read the password, actually.
+two hosts with encryption, but it does not prevent the application
+server from reading the password in clear text. Any process in the
+server can read the password, actually.
 
 *Broken duplicate request processing suppression*: A client requesting
 to create a new employee using the Staff API encounters either a timeout
@@ -145,21 +145,21 @@ of the following might have happened to the original request:
    connection attempts to the Staff service, and so the client closes
    this request attempt.
 
-3. Staff service received the request and used an SQL transaction to
-   encompass its own request to the Users API for creating the
-   associated user entity. Staff service received the success response
-   from Users service, updated the employee row, and committed the SQL
-   transaction. But Staff service crashed just before responding back to
-   the API gateway. Eventually the gateway times out the connection to
-   Staff service and send a *504 Gateway Timeout* error response to the
-   client.
+3. The Staff service received the request and used an SQL transaction to
+   encompass sending its own request to the Users API for creating the
+   associated user entity. The Staff service received the success
+   response from the Users service, updated the employee row, and
+   committed the SQL transaction. But the Staff service crashed just
+   before responding back to the API gateway. Eventually, the gateway
+   times out the connection to the Staff service and sends a *504
+   Gateway Timeout* error response to the client.
 
 4. Like previously, but just after opening the encompassing SQL
-   transaction, Staff service enters stop-the-world garbage collection
-   phase, which effectively pauses the whole app. This makes the API
-   gateway respond with *504 Gateway Timeout* to the client. After the
-   garbage collection phase is over, the app continues processing like
-   nothing would have happened.
+   transaction, the Staff service enters stop-the-world garbage
+   collection phase, which effectively pauses the whole service. This
+   makes the API gateway respond with *504 Gateway Timeout* to the
+   client. After the garbage collection phase is over, the service
+   continues processing like nothing would have happened.
 
 5. Like cases 2, 3, or 4, but it was the Users service that failed.
 
@@ -174,9 +174,10 @@ mechanisms alone cannot guarantee that a request traversed over many
 hops would be processed only once.
 
 In case 5, the system was left in an illegal state: there's a user
-entity in the IdP and Users service, but no associated employee entity
-in Staff service. This demonstrates that database transactions alone
-cannot guarantee that the overall system was left in correct state.
+entity in the IdP and a corresponding identifier mapping in the Users
+service, but no associated employee entity in the Staff service. This
+demonstrates that database transactions alone cannot guarantee that the
+overall system was left in correct state.
 
 Both TCP and database transactions helped to ensure data correctness
 between two components, but they didn't guarantee that the overall
@@ -210,10 +211,10 @@ together in achieving the function.
 
 Going back to the earlier example problems, a way to guarantee data
 integrity is to make the client to compute a hash over the request's
-payload data and to include the hash in the request. The app servers,
-upon receiving the request, compute the hash and compare it to the
-expected one in the request. If the computed hash equals the expected
-hash, the server may process the request.
+payload data and to include the hash in the request. The application
+servers, upon receiving the request, compute the hash and compare it to
+the expected one in the request. If the computed hash equals the
+expected hash, the server may process the request.
 
 Data confidentiality can be achieved by using end-to-end encryption.
 
@@ -256,9 +257,9 @@ principles are the same regardless of using another protocol, such as
 REST or RPC.
 
 1. GraphQL query operations return the data based on the current state
-   of the app service. It's expected that a query with certain input
+   of the server. It's expected that a query with certain input
    requested over time may return different data as output, reflecting
-   changes in the current state of the app service by mutations.
+   changes in the current state of the service by mutations.
 
 2. All GraphQL mutation operations must include operation identifier as
    input, in a parameter called `transactionId`. Two requests with the
@@ -335,8 +336,8 @@ following sequence diagram shows why:
 
 In the diagram, client requests creating a new employee with a certain
 username. The service enforces that the username must be unique. The
-request propagates via the API gateway to the app service, and the
-service processes the request with success. But then the API gateway
+request propagates via the API gateway to the application service, and
+the service processes the request with success. But then the API gateway
 crashes before it forwards the response to the client. Eventually, the
 retry timeout of the client triggers and the client sends the same
 request again. This time the client receives the response, but it's a
@@ -442,7 +443,7 @@ last operation (the `transactionId` ending with `a4`) was a failure to
 create a new employee. We may publish the identifier of a new entity
 only after succeeding in entity creation.
 
-In general terms, Staff service utilizes the `transaction` table as
+In general terms, the Staff service utilizes the `transaction` table as
 follows:
 
 1. Upon receiving a new mutation request, the service opens a database
@@ -493,15 +494,16 @@ follows:
    client.
 
 The 5th API design principle is about the ability to track the
-propagation of change across services. If Users service, coming after
-Staff service in the communication path of processing client's mutation
-request, has completed a request with a certain `transactionId`, but the
-Staff service isn't, we know that Staff service is malfunctioning.
+propagation of change across services. If the Users service, coming
+after the Staff service in the communication path of processing client's
+mutation request, has completed a request with a certain
+`transactionId`, but the Staff service isn't, we know that the Staff
+service is malfunctioning.
 
 Continuing the earlier example of creating a new employee in the Staff
-API (the `createEmployee` mutation), Staff service might send a GraphQL
-mutation like this to Users service in order to create a user entity to
-associate with the employee:
+API (the `createEmployee` mutation), the Staff service might send a
+GraphQL mutation like this to the Users service in order to create a
+user entity to associate with the employee:
 
 {% highlight graphql %}
 {% raw %}
@@ -532,15 +534,15 @@ I think duplicate request processing suppression and database
 transactions share some of their goals. Especially, both aim to protect
 against data corruption by guaranteeing that processing takes effect at
 most once. But duplicate request suppression is not a form of
-distributed transactions either. For example, it's possible that Staff
-service might crash while processing the `createEmployee` mutation, just
-after User service has completed processing the `createUser` mutation
-received from Staff service. In that situation, Users service will have
-row in its `transaction` table indicating completed request processing,
-but the same table in Staff service won't contain a corresponding row
-for the `createEmployee` mutation. The system will be left in an
-inconsistent state unless the client retries the request until receiving
-a response.[^4]
+distributed transactions either. For example, it's possible that the
+Staff service might crash while processing the `createEmployee`
+mutation, just after the User service has completed processing the
+`createUser` mutation received from the Staff service. In that
+situation, the Users service will have a row in its `transaction` table
+indicating completed request processing, but the same table in the Staff
+service won't contain a corresponding row for the `createEmployee`
+mutation. The system will be left in an inconsistent state unless the
+client retries the request until receiving a response.[^4]
 
 Note that because the `transactionId` parameter is user input, its value
 must be treated as unsafe and potentially malicious. Clients might
@@ -567,8 +569,8 @@ errors on retries and check if the user was created successfully on an
 earlier attempt after all. In addition, you should have a mechanism to
 suppress duplicate request processing in the client-facing side of the
 facade service, especially if the service stores state about some of the
-data in the external service (entity identifier mapping, like in Users
-service, for example).
+data in the external service (entity identifier mapping, like in the
+Users service, for instance).
 
 ## Summary
 
