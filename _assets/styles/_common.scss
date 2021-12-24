@@ -50,10 +50,6 @@ em {
   font-style: italic;
 }
 
-ol, ul {
-  padding-left: 1em;
-}
-
 li {
   margin: $para-vmargin 0;
   line-height: $para-line-height;
@@ -130,7 +126,7 @@ figcaption {
 
 img {
   display: block;
-  margin: 0 auto;
+  @include centered;
 }
 
 th {
@@ -167,16 +163,20 @@ tbody tr:nth-child(even) {
   background-color: $color-green-light;
   border-bottom: 1px solid $color-green-dark;
   padding: ($section-vmargin - 10px) $section-hmargin;
+
   header {
     @include centered;
     @include fluid_width($section-min-width, $section-max-width);
+
     h1 {
       margin: 0;
       font-size: 140%;
       position: relative;
+
       a {
         color: $color-brown;
         text-decoration: none;
+
         @media (min-width: $main-column-max-width + 2 * $section-hmargin) {
           &:hover:before {
             content: "<<";
@@ -184,10 +184,12 @@ tbody tr:nth-child(even) {
             left: -1.5em;
             animation: banner-link-back-appear 0.3s ease-in;
           }
+
           @keyframes banner-link-back-appear {
             from {
               transform: translateX(0.75em) rotateY(90deg);
             }
+
             to {
               transform: translateX(0) rotateY(0deg);
             }
@@ -212,16 +214,19 @@ tbody tr:nth-child(even) {
   background-color: $color-green-light;
   border-top: 1px solid $color-green-dark;
   display: table;
+
   .legal {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
     padding: 0 $section-hmargin;
     color: $color-brown;
+
     p {
       margin: $para-vmargin/4 0;
     }
   }
+
   .copyright {
     font-size: 80%;
   }

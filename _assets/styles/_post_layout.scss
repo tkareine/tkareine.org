@@ -3,16 +3,19 @@
 .post_layout {
   header {
     position: relative;
+
     time {
       color: $color-brown;
       margin-bottom: $section-vmargin;
       line-height: $para-line-height;
       display: block;
     }
+
     @media (min-width: $header-breakpoint-width) {
       h1 {
         width: 75%;  // do not overlap date on the right
       }
+
       time {
         position: absolute;
         bottom: 0;
@@ -21,9 +24,15 @@
       }
     }
   }
+
+  ol, ul {
+    margin-left: 1.4em;
+  }
+
   p.update {
     font-style: italic;
   }
+
   .footnotes {
     border-top: 1px solid $color-green-dark;
     margin-top: 2 * $para-vmargin;
