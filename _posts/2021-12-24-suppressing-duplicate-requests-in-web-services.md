@@ -239,11 +239,11 @@ For mutations, Kleppmann proposes to include an operation identifier in
 the request originating from the client. Upon receiving the request, the
 server can query its database to see if an operation with this
 identifier has been processed already. The server processes the request
-only if there's no existing row with the identifier. When the processing
-is about to finish, server adds a row indicating that the request has
-been completed. The operation identifier can either be generated or
-derived from the payload, whichever is more convenient for the business
-logic.
+only if there's no existing row having the identifier. When processing
+is about to finish, the server adds a row containing the identifier
+indicating that the request has been completed. The operation identifier
+can either be generated or derived from the input data, whichever is
+more convenient for the business logic.
 
 Applying Kleppmann's approach to suppress duplicate request processing,
 in the context of the imaginary web service presented earlier, is the
@@ -285,8 +285,10 @@ REST or RPC.
 5. The same `transactionId` value must be passed as-is to dependent
    services.
 
-Except for the first design principle, which should be self-sufficient,
-I'll go through them one-by-one.
+The principles apply to both public and internal APIs alike.
+
+I'll go through the principles one-by-one, except for the first, which
+should be self-sufficient.
 
 The 2nd principle enables distinguishing between two requests and to
 tell whether they are for the same purpose, even if the input payload
@@ -493,10 +495,10 @@ follows:
 5. The service commits the database transaction and responds to the
    client.
 
-The 5th API design principle is about the ability to track the
+The 5th API design principle concerns the ability to track the
 propagation of change across services. If the Users service, coming
-after the Staff service in the communication path of processing client's
-mutation request, has completed a request with a certain
+after the Staff service in the communication path of processing clients'
+mutation requests, has completed a request with a certain
 `transactionId`, but the Staff service isn't, we know that the Staff
 service is malfunctioning.
 
