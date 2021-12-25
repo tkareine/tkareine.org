@@ -34,7 +34,7 @@ directory '_tmp'
 CLOBBER.include '_tmp'
 
 namespace :sass do
-  desc 'Ensure node-sass is installed'
+  desc 'Check if node-sass is installed'
   task :verify do
     unless File.executable?(SASS_CONFIG.fetch(:bin))
       raise "node-sass executable not found: #{SASS_CONFIG.fetch(:bin)}\nTry `npm ci`."
@@ -79,9 +79,9 @@ namespace :jekyll do
 end
 
 namespace :aws do
-  desc 'Ensure AWS settings are set as environment variables'
+  desc 'Check if AWS environment variables are set'
   task :verify do
-    abort 'AWS settings are unset, try `source .env.sh`' if AWS_ENV_NAMES.find do |n|
+    abort "AWS environment variables are unset.\nTry `source .env.sh`." if AWS_ENV_NAMES.find do |n|
       env_var = ENV[n]
       env_var.nil? || env_var.empty?
     end
