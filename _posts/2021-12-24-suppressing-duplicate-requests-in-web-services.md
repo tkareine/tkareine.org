@@ -7,12 +7,12 @@ published: true
 
 Suppressing duplicate request processing prevents some forms of data
 corruption, such as data duplication and lost data. Achieving
-suppression together with client retries establishes *exactly-once*
-request processing semantics in the system.[^1] In this article, I
-present an imaginary web service built on microservice style design,
-inspect that and its clients together as a system, define the duplicate
-request processing problem, and the general solution to it. Finally,
-I'll show one possible way to implement the solution.
+suppression together with client retries effectively establishes
+*exactly-once* request processing semantics in the system.[^1] In this
+article, I present an imaginary web service built on microservice style
+design, inspect that and its clients together as a system, define the
+duplicate request processing problem, and the general solution to it.
+Finally, I'll show one possible way to implement the solution.
 
 The microservices involved use synchronous requests to pull and push
 data so that any part of the overall state is managed centrally in one
@@ -593,9 +593,15 @@ retry requests, and that the response, when it finally arrives, has the
 same content as the response to the first request that was actually
 processed?
 
-[^1]: In *exactly-once semantics*, a system processes a message so that
+[^1]: In *exactly-once* semantics, a system processes a message so that
     the final effect is the same as if no faults occurred, even if the
-    operation was retried due to some fault.
+    operation was retried due to some fault. Thinking web services, that
+    theoretically necessitates the client to support infinite number of
+    retries, because the service might be unreachable when the client
+    sent its request. In turn, the server must guarantee *at-most-once*
+    semantics in processing received requests: the server must detect
+    duplicate requests and process only the first of them either
+    completely or not at all.
 
 [^2]: An *entity* is an object that is defined primarily by its
     identifying attribute (such as UUID). Two different entities might
