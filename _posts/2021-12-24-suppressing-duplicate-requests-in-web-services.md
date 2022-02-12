@@ -9,10 +9,10 @@ Suppressing duplicate request processing prevents some forms of data
 corruption, such as data duplication and lost data. Achieving
 suppression together with client retries effectively establishes
 *exactly-once* request processing semantics in the system.[^1] In this
-article, I present an imaginary web service built on microservice style
-design, inspect that and its clients together as a system, define the
-duplicate request processing problem, and the general solution to it.
-Finally, I'll show one possible way to implement the solution.
+article, I present an imaginary web service built on the microservice
+style design, inspect that and its clients together as a system, define
+the duplicate request processing problem, and the general solution to
+it. Finally, I'll show one possible way to implement the solution.
 
 The microservices involved use synchronous requests to pull and push
 data so that any part of the overall state is managed centrally in one
@@ -279,7 +279,7 @@ REST or RPC.
    all the responses to the same `transactionId` must signal that
    failure. In particular, a success response may contain output
    reflecting the current state of the data, but that output might be
-   different when client requests the same mutation again (another
+   different when the client requests the same mutation again (another
    mutation may have changed the data).
 
 5. The same `transactionId` value must be passed as-is to dependent
@@ -306,7 +306,7 @@ mutation {
       transactionId: "addb372c-046f-43e8-c91f-1df1a30caaa1"
       data: {
         firstName: "Albert"
-        lastName: "Vesker"
+        lastName: "Wesker"
         employment: {
           startsAt: "2021-08-12"
           personnelTypeCodes: [MANAGEMENT]
@@ -334,17 +334,17 @@ constraint on an attribute, such as username, does prevent clients from
 creating duplicate user entities, but client retries are broken. The
 following sequence diagram shows why:
 
-<img src="{{ "/" | relative_url }}{% ministamp _assets/images/client-retries-when-only-uniqueness-constraint.svg assets/images/client-retries-when-only-uniqueness-constraint.svg %}" alt="A sequence diagram showing how client can receive an error when retrying a mutation operation" title="A sequence diagram showing how client can receive an error when retrying a mutation operation" width="100%" style="max-width: 550px;" />
+<img src="{{ "/" | relative_url }}{% ministamp _assets/images/client-retries-when-only-uniqueness-constraint.svg assets/images/client-retries-when-only-uniqueness-constraint.svg %}" alt="A sequence diagram showing how the client can receive an error when retrying a mutation operation" title="A sequence diagram showing how the client can receive an error when retrying a mutation operation" width="100%" style="max-width: 550px;" />
 
-In the diagram, client requests creating a new employee with a certain
-username. The service enforces that the username must be unique. The
-request propagates via the API gateway to the application service, and
-the service processes the request with success. But then the API gateway
-crashes before it forwards the response to the client. Eventually, the
-retry timeout of the client triggers and the client sends the same
-request again. This time the client receives the response, but it's a
-failure: an employee with the supplied username exists already. This is
-unexpected from the client's perspective.
+In the diagram, the client requests creating a new employee with a
+certain username. The service enforces that the username must be unique.
+The request propagates via the API gateway to the application service,
+and the service processes the request with success. But then the API
+gateway crashes before it forwards the response to the client.
+Eventually, the retry timeout in the client triggers and the client
+sends the same request again. This time the client receives the
+response, but it's a failure: an employee with the supplied username
+exists already. This is unexpected from the client's perspective.
 
 An implementation of the 3rd and 4th principles in the server is an SQL
 table for storing the outcomes of processed mutations. The database
@@ -515,7 +515,7 @@ mutation {
       transactionId: "addb372c-046f-43e8-c91f-1df1a30caaa1"
       data: {
         firstName: "Albert"
-        lastName: "Vesker"
+        lastName: "Wesker"
         # etc…
       }
     }
