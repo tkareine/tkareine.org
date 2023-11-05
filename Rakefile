@@ -3,6 +3,7 @@
 require 'rake/clean'
 require 'shellwords'
 require 'rubocop/rake_task'
+require_relative '_rake/support'
 
 JEKYLL_CONFIG = {
   bin:         'jekyll',
@@ -81,6 +82,10 @@ end
 namespace :aws do
   desc 'Check if AWS environment variables are set'
   task :verify do
+    unless Support.command_exist?('aws')
+      raise 'AWS CLI executable not found: aws'
+    end
+
     abort "AWS environment variables are unset.\nTry `source .env.sh`." if AWS_ENV_NAMES.find do |n|
       env_var = ENV.fetch(n, nil)
       env_var.nil? || env_var.empty?
