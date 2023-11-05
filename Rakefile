@@ -82,7 +82,7 @@ namespace :aws do
   desc 'Check if AWS environment variables are set'
   task :verify do
     abort "AWS environment variables are unset.\nTry `source .env.sh`." if AWS_ENV_NAMES.find do |n|
-      env_var = ENV[n]
+      env_var = ENV.fetch(n, nil)
       env_var.nil? || env_var.empty?
     end
   end
