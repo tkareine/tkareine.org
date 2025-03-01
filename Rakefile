@@ -12,11 +12,11 @@ JEKYLL_CONFIG = {
 }.freeze
 
 SASS_CONFIG = {
-  bin:               'node_modules/.bin/sass',
-  dev_options:       '--style=compressed --embed-sources --embed-source-map',
-  prod_options:      '--style=compressed --no-source-map',
-  output_file:       '_tmp/site.css',
-  input_file:        '_assets/styles/site.scss'
+  bin:          'node_modules/.bin/sass',
+  dev_options:  '--style=compressed --embed-sources --embed-source-map',
+  prod_options: '--style=compressed --no-source-map',
+  output_file:  '_tmp/site.css',
+  input_file:   '_assets/styles/site.scss'
 }.freeze
 
 DEV_ENV = {
