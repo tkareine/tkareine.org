@@ -1,7 +1,7 @@
 # tkareine.org
 
-The data of my blog. Utilizes [Jekyll] and [node-sass]. Deployed to an
-S3 bucket at AWS.
+The data of my blog. Utilizes [Jekyll] and [Sass]. Deployed to an S3
+bucket at AWS.
 
 ## Usage
 
@@ -13,7 +13,7 @@ bundle install
 npm ci
 ```
 
-To compile and watch Sass sources for changes with [node-sass]:
+To compile and watch Sass sources for changes with [Sass]:
 
 ``` shell
 bundle exec rake sass:watch
@@ -46,5 +46,5 @@ else is released under the [MIT
 License](https://opensource.org/licenses/MIT).
 
 [Jekyll]: https://jekyllrb.com/
+[Sass]: https://sass-lang.com/
 [Webrick]: https://github.com/ruby/webrick
-[node-sass]: https://github.com/sass/node-sass

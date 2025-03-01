@@ -34,10 +34,10 @@ directory '_tmp'
 CLOBBER.include '_tmp'
 
 namespace :sass do
-  desc 'Check if node-sass is installed'
+  desc 'Check if Sass is installed'
   task :verify do
     unless File.executable?(SASS_CONFIG.fetch(:bin))
-      raise "node-sass executable not found: #{SASS_CONFIG.fetch(:bin)}\nTry `npm ci`."
+      raise "Sass executable not found: #{SASS_CONFIG.fetch(:bin)}\nTry `npm ci`."
     end
   end
 
