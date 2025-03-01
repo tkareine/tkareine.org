@@ -1,30 +1,30 @@
-@import "_variables.scss";
-@import "_mixins.scss";
+@use "_variables.scss";
+@use "_mixins.scss";
 
 .default_layout {
   .articles {
-    margin-bottom: $section-vmargin;
-    line-height: $header-line-height;
+    margin-bottom: variables.$section-vmargin;
+    line-height: variables.$header-line-height;
 
     .posts {
       font-size: 140%;
 
       li {
-        @include clear_float;
+        @include mixins.clear_float;
         list-style: none;
       }
 
       li + li {
-        margin-top: $para-vmargin;
+        margin-top: variables.$para-vmargin;
       }
 
-      @media (max-width: $articles-breakpoint-width - 1) {
+      @media (max-width: variables.$articles-breakpoint-width - 1) {
         .title {
           margin-right: 0.3em;
         }
       }
 
-      @media (min-width: $articles-breakpoint-width) {
+      @media (min-width: variables.$articles-breakpoint-width) {
         .title {
           display: block;
           float: right;
@@ -34,15 +34,15 @@
 
       .published {
         font-size: 80%;
-        color: $color-brown;
+        color: variables.$color-brown;
         white-space: nowrap;
 
-        @media (min-width: $articles-breakpoint-width) {
+        @media (min-width: variables.$articles-breakpoint-width) {
           & {
             $date-parts-hmargin: 0.3em;
             display: block;
             float: left;
-            margin-top: 0.2em;  // attempt to set to title's baseline
+            margin-top: 0.2em; // attempt to set to title's baseline
             width: 22%;
 
             .day {
@@ -64,7 +64,7 @@
   }
 
   .avatar {
-    border: 2px solid $color-black;
+    border: 2px solid variables.$color-black;
   }
 
   ul.contacts li {
@@ -74,9 +74,9 @@
 
     &:before {
       content: "\00bb";
-      color: $color-green-dark;
+      color: variables.$color-green-dark;
       position: absolute;
-      left: -$list-item-style-hmargin;
+      left: -(variables.$list-item-style-hmargin);
     }
   }
 

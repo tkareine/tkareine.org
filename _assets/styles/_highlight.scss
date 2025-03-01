@@ -1,11 +1,12 @@
-@import "_variables.scss";
+@use "sass:color";
+@use "_variables.scss";
 
 // Reference: https://pygments.org/docs/tokens/
 
 .highlight {
-  $color-hl-base: $color-gray-dark;
-  $color-hl-gray3: lighten($color-black, 30%);
-  $color-hl-gray4: lighten($color-black, 40%);
+  $color-hl-base: variables.$color-gray-dark;
+  $color-hl-gray3: color.adjust(variables.$color-black, $lightness: 30%);
+  $color-hl-gray4: color.adjust(variables.$color-black, $lightness: 40%);
   $color-hl-red1: #aa0000;
   $color-hl-red2: #990000;
   $color-hl-red6: #ffaaaa;

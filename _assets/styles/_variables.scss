@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $font-header: "News Cycle", sans-serif;
 $font-body: Roboto, sans-serif;
 $font-code: "Roboto Mono", monospace;
@@ -7,7 +9,7 @@ $code-line-height: 1.2;
 $para-line-height: 1.6;
 $inline-hl-padding: 0 2px;
 
-$list-item-style-hmargin: 1.0rem;
+$list-item-style-hmargin: 1rem;
 
 $color-black: #000;
 $color-white: #fff;
@@ -15,14 +17,14 @@ $color-green-light: #edf8b8;
 $color-green-dark: #9dd49f;
 $color-teal-light: #19625e;
 $color-brown: #5f5555;
-$color-gray-dark: lighten($color-black, 20%);
-$color-gray-light2: darken($color-white, 20%);
-$color-gray-light1: darken($color-white, 5%);
+$color-gray-dark: color.adjust($color-black, $lightness: 20%);
+$color-gray-light2: color.adjust($color-white, $lightness: -20%);
+$color-gray-light1: color.adjust($color-white, $lightness: -5%);
 
 $main-column-max-width: 720px;
 $main-column-min-width: 320px;
-$header-breakpoint-width: 440px;    // pick value between $main-column-{min,max}-width
-$articles-breakpoint-width: 640px;  // pick value between $main-column-{min,max}-width
+$header-breakpoint-width: 440px; // pick value between $main-column-{min,max}-width
+$articles-breakpoint-width: 640px; // pick value between $main-column-{min,max}-width
 
 $section-hmargin: 30px;
 $section-vmargin: 30px;
@@ -31,4 +33,4 @@ $section-min-width: $main-column-min-width - 2 * $section-hmargin;
 
 $para-vmargin: 1.5rem;
 
-$footer-height: 40px;  // must be fixed in order to be absolutely positioned to page bottom
+$footer-height: 40px; // must be fixed in order to be absolutely positioned to page bottom

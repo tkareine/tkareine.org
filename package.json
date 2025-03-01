@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "node-sass": "^9.0.0"
+    "sass": "^1.85.1"
   },
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22"
   }
 }

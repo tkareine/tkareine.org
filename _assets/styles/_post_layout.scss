@@ -1,17 +1,17 @@
-@import "_variables.scss";
+@use "_variables.scss";
 
 .post_layout {
   header {
     position: relative;
 
     time {
-      color: $color-brown;
-      margin-bottom: $section-vmargin;
-      line-height: $para-line-height;
+      color: variables.$color-brown;
+      margin-bottom: variables.$section-vmargin;
+      line-height: variables.$para-line-height;
       display: block;
     }
 
-    @media (min-width: $header-breakpoint-width) {
+    @media (min-width: variables.$header-breakpoint-width) {
       h1 {
         width: 75%;  // do not overlap date on the right
       }
@@ -34,7 +34,7 @@
   }
 
   .footnotes {
-    border-top: 1px solid $color-green-dark;
-    margin-top: 2 * $para-vmargin;
+    border-top: 1px solid variables.$color-green-dark;
+    margin-top: 2 * variables.$para-vmargin;
   }
 }

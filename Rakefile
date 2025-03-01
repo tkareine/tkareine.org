@@ -12,10 +12,9 @@ JEKYLL_CONFIG = {
 }.freeze
 
 SASS_CONFIG = {
-  bin:               'node_modules/.bin/node-sass',
-  common_options:    '--output-style compressed',
-  sourcemap_options: '--source-map-embed --source-map-contents',
-  output_dir:        '_tmp',
+  bin:               'node_modules/.bin/sass',
+  dev_options:       '--style=compressed --embed-sources --embed-source-map',
+  prod_options:      '--style=compressed --no-source-map',
   output_file:       '_tmp/site.css',
   input_file:        '_assets/styles/site.scss'
 }.freeze
@@ -44,17 +43,18 @@ namespace :sass do
 
   CLOBBER.include 'node_modules'
 
+  # See https://sass-lang.com/documentation/cli/dart-sass/
   desc 'Compile assets with Sass (prod env)'
   task compile: :_tmp do
-    sh %{#{SASS_CONFIG.fetch(:bin)} #{SASS_CONFIG.fetch(:common_options)} #{SASS_CONFIG.fetch(:input_file)} > #{SASS_CONFIG.fetch(:output_file)}}
+    sh %{#{SASS_CONFIG.fetch(:bin)} #{SASS_CONFIG.fetch(:prod_options)} #{SASS_CONFIG.fetch(:input_file)}:#{SASS_CONFIG.fetch(:output_file)}}
   end
 
   CLEAN.include SASS_CONFIG.fetch(:output_file)
 
   desc 'Compile and watch assets with Sass, recompiling when necessary (dev env)'
   task watch: :_tmp do
-    sh %{#{SASS_CONFIG.fetch(:bin)} #{SASS_CONFIG.fetch(:common_options)} #{SASS_CONFIG.fetch(:sourcemap_options)} #{SASS_CONFIG.fetch(:input_file)} > #{SASS_CONFIG.fetch(:output_file)}}
-    sh %{#{SASS_CONFIG.fetch(:bin)} --watch #{SASS_CONFIG.fetch(:common_options)} #{SASS_CONFIG.fetch(:sourcemap_options)} --output #{SASS_CONFIG.fetch(:output_dir)} #{SASS_CONFIG.fetch(:input_file)}}
+    sh %{#{SASS_CONFIG.fetch(:bin)} #{SASS_CONFIG.fetch(:dev_options)} #{SASS_CONFIG.fetch(:input_file)}:#{SASS_CONFIG.fetch(:output_file)}}
+    sh %{#{SASS_CONFIG.fetch(:bin)} --watch #{SASS_CONFIG.fetch(:dev_options)} #{SASS_CONFIG.fetch(:input_file)}:#{SASS_CONFIG.fetch(:output_file)}}
   end
 end
 

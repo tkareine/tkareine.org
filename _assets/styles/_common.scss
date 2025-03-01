@@ -1,41 +1,51 @@
-@import "_variables.scss";
-@import "_mixins.scss";
+@use "_variables.scss";
+@use "_mixins.scss";
 
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i|Roboto+Mono:400,700|News+Cycle:700&display=swap");
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 body {
   width: 100%;
-  font-family: $font-body;
-  background-color: $color-green-light;
-  color: $color-gray-dark;
+  font-family: variables.$font-body;
+  background-color: variables.$color-green-light;
+  color: variables.$color-gray-dark;
 }
 
 .page {
   position: relative;
   height: auto !important;
-  background-color: $color-white;
+  background-color: variables.$color-white;
   min-height: 100%;
-  min-width: $main-column-min-width;
+  min-width: variables.$main-column-min-width;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-header;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: variables.$font-header;
   font-weight: 700;
-  color: $color-brown;
-  line-height: $header-line-height;
+  color: variables.$color-brown;
+  line-height: variables.$header-line-height;
 }
 
 h1 {
-  margin: 0 0 $section-vmargin;
+  margin: 0 0 variables.$section-vmargin;
   font-size: 260%;
 }
 
-h2, h3, h4, h5, h6 {
-  margin: $section-vmargin 0 $para-vmargin;
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: variables.$section-vmargin 0 variables.$para-vmargin;
 }
 
 h2 {
@@ -51,35 +61,38 @@ em {
 }
 
 li {
-  margin: $para-vmargin 0;
-  line-height: $para-line-height;
+  margin: variables.$para-vmargin 0;
+  line-height: variables.$para-line-height;
   list-style-position: outside;
 }
 
 p {
-  line-height: $para-line-height;
-  margin: $para-vmargin 0;
+  line-height: variables.$para-line-height;
+  margin: variables.$para-vmargin 0;
 
   a {
-    padding: $inline-hl-padding;
+    padding: variables.$inline-hl-padding;
 
-    &:hover, &:hover code, &:active, &:active code {
-      background-color: $color-green-light;
+    &:hover,
+    &:hover code,
+    &:active,
+    &:active code {
+      background-color: variables.$color-green-light;
     }
   }
 
   code {
-    background-color: $color-gray-light1;
-    padding: $inline-hl-padding;
+    background-color: variables.$color-gray-light1;
+    padding: variables.$inline-hl-padding;
   }
 }
 
 pre {
-  line-height: $code-line-height;
+  line-height: variables.$code-line-height;
 }
 
 code {
-  font-family: $font-code;
+  font-family: variables.$font-code;
   font-size: 90%;
 }
 
@@ -89,22 +102,22 @@ sup {
 }
 
 a {
-  color: $color-teal-light;
+  color: variables.$color-teal-light;
   text-decoration: underline;
 
   &:visited {
-    color: $color-gray-dark;
+    color: variables.$color-gray-dark;
   }
 }
 
 blockquote {
-  border-left: 2px solid $color-gray-light2;
+  border-left: 2px solid variables.$color-gray-light2;
   padding-left: 1em;
   font-style: italic;
 }
 
 figure {
-  margin: $para-vmargin 0;
+  margin: variables.$para-vmargin 0;
 
   & > & {
     margin: 0;
@@ -114,27 +127,27 @@ figure {
 figcaption {
   text-align: center;
   font-style: italic;
-  margin-bottom: $para-vmargin/2;
+  margin-bottom: calc(variables.$para-vmargin/2);
 }
 
 .highlight {
   overflow-x: auto;
   padding: 0.5em 0;
-  border-top: 1px solid $color-green-dark;
-  border-bottom: 1px solid $color-green-dark;
+  border-top: 1px solid variables.$color-green-dark;
+  border-bottom: 1px solid variables.$color-green-dark;
 }
 
 img {
   display: block;
-  @include centered;
+  @include mixins.centered;
 }
 
 tbody {
-  border-top: 1px solid $color-green-dark;
-  border-bottom: 1px solid $color-green-dark;
+  border-top: 1px solid variables.$color-green-dark;
+  border-bottom: 1px solid variables.$color-green-dark;
 
   tr:nth-child(even) {
-    background-color: $color-gray-light1;
+    background-color: variables.$color-gray-light1;
   }
 }
 
@@ -142,7 +155,8 @@ th {
   font-weight: 700;
 }
 
-th, td {
+th,
+td {
   padding: 0.5em;
 }
 
@@ -151,26 +165,26 @@ th, td {
 }
 
 .code-table td {
-  font-family: $font-code;
+  font-family: variables.$font-code;
   font-size: 90%;
 }
 
-@media (min-width: $section-max-width - 2 * $section-hmargin) {
+@media (min-width: variables.$section-max-width - 2 * variables.$section-hmargin) {
   .inline-right {
     float: right;
-    margin-left: $para-vmargin;
-    margin-bottom: $para-vmargin;
+    margin-left: variables.$para-vmargin;
+    margin-bottom: variables.$para-vmargin;
   }
 }
 
 .banner {
-  background-color: $color-green-light;
-  border-bottom: 1px solid $color-green-dark;
-  padding: ($section-vmargin - 10px) $section-hmargin;
+  background-color: variables.$color-green-light;
+  border-bottom: 1px solid variables.$color-green-dark;
+  padding: (variables.$section-vmargin - 10px) variables.$section-hmargin;
 
   header {
-    @include centered;
-    @include fluid_width($section-min-width, $section-max-width);
+    @include mixins.centered;
+    @include mixins.fluid_width(variables.$section-min-width, variables.$section-max-width);
 
     h1 {
       margin: 0;
@@ -178,10 +192,10 @@ th, td {
       position: relative;
 
       a {
-        color: $color-brown;
+        color: variables.$color-brown;
         text-decoration: none;
 
-        @media (min-width: $main-column-max-width + 2 * $section-hmargin) {
+        @media (min-width: variables.$main-column-max-width + 2 * variables.$section-hmargin) {
           &:hover:before {
             content: "<<";
             position: absolute;
@@ -205,29 +219,30 @@ th, td {
 }
 
 .main {
-  @include centered;
-  @include fluid_width($section-min-width, $section-max-width);
-  padding: (2 * $section-vmargin) $section-hmargin ($footer-height + 2 * $section-vmargin);
+  @include mixins.centered;
+  @include mixins.fluid_width(variables.$section-min-width, variables.$section-max-width);
+  padding: (2 * variables.$section-vmargin) variables.$section-hmargin
+    (variables.$footer-height + 2 * variables.$section-vmargin);
 }
 
 .page > footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: $footer-height;
-  background-color: $color-green-light;
-  border-top: 1px solid $color-green-dark;
+  height: variables.$footer-height;
+  background-color: variables.$color-green-light;
+  border-top: 1px solid variables.$color-green-dark;
   display: table;
 
   .legal {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    padding: 0 $section-hmargin;
-    color: $color-brown;
+    padding: 0 variables.$section-hmargin;
+    color: variables.$color-brown;
 
     p {
-      margin: $para-vmargin/4 0;
+      margin: calc(variables.$para-vmargin/4) 0;
     }
   }
 
