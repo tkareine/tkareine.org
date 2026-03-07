@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org/'
-ruby '3.3.5'
+ruby '4.0.1'
 
 gem 'jekyll',            '~> 4.0'
 gem 'jekyll-minibundle', '~> 3.0'

@@ -37,7 +37,7 @@ namespace :sass do
   desc 'Check if Sass is installed'
   task :verify do
     unless File.executable?(SASS_CONFIG.fetch(:bin))
-      raise "Sass executable not found: #{SASS_CONFIG.fetch(:bin)}\nTry `npm ci`."
+      raise "Sass executable not found: #{SASS_CONFIG.fetch(:bin)}\nTry `pnpm install`."
     end
   end
 

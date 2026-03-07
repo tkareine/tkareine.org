@@ -7,34 +7,34 @@ bucket at AWS.
 
 To install dependencies:
 
-``` shell
+```shell
 gem install bundler
 bundle install
-npm ci
+pnpm install
 ```
 
 To compile and watch Sass sources for changes with [Sass]:
 
-``` shell
+```shell
 bundle exec rake sass:watch
 ```
 
 In another terminal, launch [Jekyll] to compile, watch site sources for
 changes, and serve the site with the [Webrick] http server:
 
-``` shell
+```shell
 bundle exec rake jekyll:watch:prod  # or :dev
 ```
 
 When you're ready to publish:
 
-``` shell
+```shell
 bundle exec rake deploy
 ```
 
 For other tasks, see:
 
-``` shell
+```shell
 bundle exec rake -D
 ```
 
