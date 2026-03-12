@@ -59,6 +59,8 @@ namespace :sass do
 end
 
 namespace :jekyll do
+  CLOBBER.include '.jekyll-cache'
+
   desc 'Compile the site (prod env)'
   task :compile do
     sh PROD_ENV, %{#{JEKYLL_CONFIG.fetch(:bin)} build #{JEKYLL_CONFIG.fetch(:common_opts)} #{JEKYLL_CONFIG.fetch(:config)}}
