@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       sass:
-        specifier: ^1.85.1
-        version: 1.97.3
+        specifier: ^1.98.0
+        version: 1.98.0
 
 packages:
 
@@ -132,8 +132,8 @@ packages:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
 
-  sass@1.97.3:
-    resolution: {integrity: sha512-fDz1zJpd5GycprAbu4Q2PV/RprsRtKC/0z82z0JLgdytmcq0+ujJbJ/09bPGDxCLkKY3Np5cRAOcWiVkLXJURg==}
+  sass@1.98.0:
+    resolution: {integrity: sha512-+4N/u9dZ4PrgzGgPlKnaaRQx64RO0JBKs9sDhQ2pLgN6JQZ25uPQZKQYaBJU48Kd5BxgXoJ4e09Dq7nMcOUW3A==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -229,7 +229,7 @@ snapshots:
 
   readdirp@4.1.2: {}
 
-  sass@1.97.3:
+  sass@1.98.0:
     dependencies:
       chokidar: 4.0.3
       immutable: 5.1.5
