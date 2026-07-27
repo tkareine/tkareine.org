@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org/'
-ruby '4.0.1'
+ruby '4.0.6'
 
 gem 'jekyll',            '~> 4.0'
-gem 'jekyll-minibundle', '~> 3.0'
+gem 'jekyll-minibundle', '~> 4.0'
 gem 'jekyll-sitemap',    '~> 1.2'
 gem 'rake',              '~> 13.0'
 gem 'rouge',             '~> 4.2'
