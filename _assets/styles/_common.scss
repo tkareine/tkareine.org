@@ -60,10 +60,29 @@ em {
   font-style: italic;
 }
 
-li {
+ul,
+ol {
   margin: variables.$para-vmargin 0;
+}
+
+li {
+  margin: variables.$list-item-style-vmargin 0;
   line-height: variables.$para-line-height;
   list-style-position: outside;
+}
+
+dl {
+  margin: variables.$para-vmargin 0;
+  line-height: variables.$para-line-height;
+}
+
+dt {
+  font-weight: 700;
+  margin-top: calc(variables.$para-vmargin/2);
+}
+
+dd {
+  margin-left: 1.5rem;
 }
 
 p {
@@ -94,6 +113,11 @@ pre {
 code {
   font-family: variables.$font-code;
   font-size: 90%;
+}
+
+sub {
+  font-size: 80%;
+  vertical-align: sub;
 }
 
 sup {

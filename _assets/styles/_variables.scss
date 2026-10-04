@@ -9,8 +9,6 @@ $code-line-height: 1.2;
 $para-line-height: 1.6;
 $inline-hl-padding: 0 2px;
 
-$list-item-style-hmargin: 1rem;
-
 $color-black: #000;
 $color-white: #fff;
 $color-green-light: #edf8b8;
@@ -32,5 +30,7 @@ $section-max-width: $main-column-max-width - 2 * $section-hmargin;
 $section-min-width: $main-column-min-width - 2 * $section-hmargin;
 
 $para-vmargin: 1.5rem;
+$list-item-style-hmargin: 1rem;
+$list-item-style-vmargin: 1rem;
 
 $footer-height: 40px; // must be fixed in order to be absolutely positioned to page bottom
