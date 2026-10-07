@@ -1,3 +1,4 @@
+*.bkp
 .env.sh
 /.bundle/
 /.jekyll-cache/
