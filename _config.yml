@@ -2,6 +2,8 @@
 source: .
 destination: _site
 exclude:
+  - .gitignore
+  - _sources
   - GPATH
   - GRTAGS
   - GTAGS
