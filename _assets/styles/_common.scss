@@ -1,7 +1,9 @@
 @use "_variables.scss";
 @use "_mixins.scss";
 
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i|Roboto+Mono:400,700|News+Cycle:700&display=swap");
+// See the CSS in the response and
+// https://developers.google.com/fonts/docs/getting_started#specifying_font_families_and_styles_in_a_stylesheet_url
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i|Roboto+Mono:400,700|News+Cycle:700&display=swap");
 
 html,
 body {
