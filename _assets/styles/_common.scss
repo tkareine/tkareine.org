@@ -127,6 +127,12 @@ sup {
   vertical-align: super;
 }
 
+input {
+  border: 1px solid variables.$color-teal-light;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
 a {
   color: variables.$color-teal-light;
   text-decoration: underline;

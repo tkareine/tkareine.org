@@ -82,7 +82,7 @@ Here are the parameters filled in, so you can try changing them:
 }
 .estimate input {
   display: block;
-  max-width: 4em;
+  max-width: 3.5em;
 }
 .estimate + .estimate {
   margin-top: 0.5em;
